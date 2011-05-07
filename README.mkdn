@@ -5,17 +5,32 @@ A class and a mixin to generate nifty buttons.
 
 <img src="http://dl.dropbox.com/u/811105/code-projects/uberbutton/screenshot.png" style="border: 1px solid #ddd">
 
+What it does
+================================
+
+ - Works on both block-level elements, inline elements, and buttons.
+ - For browsers that don't support gradients, two gradient colors are mixed to provide a solid background.
+ - For browsers that don't support RGBA, non-alpha color is specified as a fallback.
+ - The border color is calculated by darkening the fill color.
+ - Text color is determined automatically using the gradient colors given (if they are dark, text is white; if they are light, text is black)
+ - The dark and light buttons each have different text colors and shadows for the appropriate engraving effect.
+ - The lighter gradient colors for hover, and flipped gradient for the pressed state are computed automatically.
+ - With CSSPIE, its gradients and rounded corners work with IE!
+
+
 Installation
 ==================================
-Run this in the command line
+1. Add this to your **Gemfile**
 
-    gem install uberbutton
+    gem "uberbutton"
 
-Add the following line to **config/compass.rb**
+
+2. Add the following line to **config/compass.rb**
 
     require 'uberbutton'
-    
-Install the extension into compass  
+ 
+   
+3. Install the extension into compass  
 
     compass install uberbutton
 

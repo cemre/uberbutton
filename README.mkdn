@@ -6,13 +6,16 @@ A class and a mixin to generate nifty buttons.
 
 Installation
 ==================================
+Run this in the command line
 
     gem install uberbutton
 
 Add the following line to config/compass.rb
+
     require 'uberbutton'
     
-Install the framework  
+Install the extension into compass  
+
     compass install uberbutton
 
 Usage

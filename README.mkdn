@@ -1,4 +1,4 @@
-Uberbutton - Compass Plugin
+Uberbutton - A Compass plugin
 ================================
 
 A class and a mixin to generate nifty buttons.
@@ -10,7 +10,7 @@ Run this in the command line
 
     gem install uberbutton
 
-Add the following line to config/compass.rb
+Add the following line to **config/compass.rb**
 
     require 'uberbutton'
     
@@ -21,24 +21,47 @@ Install the extension into compass
 Usage
 ==================================
 
-The class "uberbutton" includes common base styles for each button.
-The mixin "uberbutton" lets you create classes for different styled buttons.
+The **class** "uberbutton" includes *common* base styles for each button.
+The **mixin** "uberbutton" lets you create classes for *different* buttons.
 
-Use "uberbutton" in conjunction with a style class you create.
+Use the class "uberbutton" in conjunction with a style class you create.
 (This isolates the common code and is for DRY).
 
-Example:
+Example
+---------------------
 
 Create the style class in scss
-.main-cta {
-  @include uberbutton(start-color, end-color, "path_to_background_pattern");
-}
 
-Use both style class and uberbutton to construct button.
-<a class="uberbutton main-cta">
-  Hello world.
-</a>
+    @import "uberbutton/uberbutton"
 
+    .main-cta {
+      @include uberbutton(start-color, end-color, "path_to_background_pattern");
+    }
+
+Then use both the style class you just created and **uberbutton** to construct button.
+
+    <a class="uberbutton main-cta">
+      Hello world.
+    </a>
+
+
+Customization
+==================================
+
+The following customizations are available:
+
+CSS3PIE
+---------------------
+If you want the gradient, rounded corners and shadows to work in IE, download CSS3PIE, and place its folder under public with the name "css3pie". If you need to upload the folder to a different location, set the following variable before importing uberbutton.
+
+    $uberbutton-csspie-location: "/css3pie/PIE.htc";
+
+
+BASE BUTTON CLASS
+---------------------
+The class "uberbutton" contains the common styles to each button. If you need to rename this class, set the following variable before importing uberbutton.
+
+    $uberbutton-base-class: "uberbutton";
 
 
 

@@ -84,4 +84,4 @@ The class "uberbutton" contains the common styles to each button. If you need to
 Author
 ====================
 
-[Cemre Gungor](http://cem,re/) started this project while drinking Four Loko.
+[Cemre Gungor](http://cem.re/) started this project while drinking Four Loko.

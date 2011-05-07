@@ -1,0 +1,45 @@
+Uberbutton - Compass Plugin
+================================
+
+A class and a mixin to generate nifty buttons.
+
+
+Installation
+==================================
+
+    gem install uberbutton
+
+Add the following line to config/compass.rb
+    require 'uberbutton'
+    
+Install the framework  
+    compass install uberbutton
+
+Usage
+==================================
+
+The class "uberbutton" includes common base styles for each button.
+The mixin "uberbutton" lets you create classes for different styled buttons.
+
+Use "uberbutton" in conjunction with a style class you create.
+(This isolates the common code and is for DRY).
+
+Example:
+
+Create the style class in scss
+.main-cta {
+  @include uberbutton(start-color, end-color, "path_to_background_pattern");
+}
+
+Use both style class and uberbutton to construct button.
+<a class="uberbutton main-cta">
+  Hello world.
+</a>
+
+
+
+
+Author
+====================
+
+[Cemre Gungor](http://cem,re/) started this project while drinking Four Loko.

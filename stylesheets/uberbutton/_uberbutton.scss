@@ -1,0 +1,124 @@
+
+/*
+  Uberbutton
+  The one button you'll ever need.
+  
+  Cemre Gungor http://cem.re
+
+*/
+
+@import "compass/css3";
+
+$uberbutton-base-class: "uberbutton" !default;
+$uberbutton-csspie-location: "/css3pie/PIE.htc" !default;
+
+// mixin used to create different colored buttons.
+@mixin uberbutton($color1, $color2, $pattern: "") {
+  $text-color: white;
+  $shadow-color: rgba(0, 0, 0, 0.5);
+  $shadow-position: -1px;
+  
+  @if lightness(mix($color1, $color2, 50%)) > 50% {
+    $text-color: #333333;
+    $text-color: rgba(0, 0, 0, 0.7);
+    $shadow-color: rgba(255, 255, 255, 0.7);
+    $shadow-position: 1px;
+  }
+  
+  @include uberbutton-base($color1, $color2, $text-color, $shadow-color, $shadow-position, $pattern); }
+
+
+.#{$uberbutton-base-class} {  
+  behavior: url($uberbutton-csspie-location);
+  @include transition(all, 0.1s, ease-in-out);	
+	
+  
+  // border
+  @include border-radius(4px);
+  -webkit-background-clip: padding-box;
+  
+  // type
+  line-height: 150%;
+  font-weight: 500;
+  text-decoration: none;
+  
+  // box structure
+  display: inline-block;
+  height: auto;
+  padding: 4px 10px;
+  cursor: pointer;
+  @include box-shadow(rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.2) 0px 1px 2px 0px);
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  &:link, &:visited {
+    margin-right: 10px;
+    line-height: 150%;
+  }
+  
+  &:active {
+    @include box-shadow(rgba(0, 0, 0, 0.1) 0px 1px 5px 0px);
+    @include translate(0, 2px);
+  }
+  
+  img {
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+  }
+}
+
+@mixin uberbutton-base($color1, $color2, $text-color, $shadow-color, $shadow-position, $pattern: "") {
+  $lighten_amount: 4%;
+  background-color: mix($color1, $color2, 50%); //fallback color
+  -pie-background: linear-gradient($color1, $color2);
+  
+  // background
+  @if $pattern != "" {
+    @include linear-gradient(color_stops($color1, $color2), top, image-url($pattern));
+  }
+  @else {
+    @include linear-gradient(color_stops($color1, $color2), top);
+  }
+    
+  // border
+  border: 1px solid darken($color2, 12%);
+  
+  // text
+  @include text-shadow($shadow-color, 0, $shadow-position, 0);
+  color: $text-color;
+  
+  &:link, &:visited {
+    color: $text-color;
+    border: 1px solid darken($color2, 20%);
+  }
+  
+  &:hover {
+    background-color: mix(lighten($color1, $lighten_amount), lighten($color2, $lighten_amount), 50%);
+    -pie-background: linear-gradient(lighten($color1, $lighten_amount), lighten($color2, $lighten_amount));
+    
+    @if $pattern != "" {
+      @include linear-gradient(color_stops(lighten($color1, $lighten_amount), lighten($color2, $lighten_amount)), top, image-url($pattern));
+    }
+    @else {
+      @include linear-gradient(color_stops(lighten($color1, $lighten_amount), lighten($color2, $lighten_amount)), top);
+    }
+    
+    color: $text-color;
+    border: 1px solid darken($color2, 20%);
+  }
+  
+  &:active {
+    background-color: mix(darken($color1, $lighten_amount), darken($color2, $lighten_amount), 50%);
+    -pie-background: linear-gradient(darken($color1, $lighten_amount), darken($color2, $lighten_amount));
+    @include linear-gradient(color_stops($color2, $color1), top);
+    @include text-shadow($shadow-color, 0, $shadow-position * -1, 0);
+    color: $text-color;
+  }
+  
+  &:focus {
+    @include box-shadow(opacify($color1, 0.5) 0 0 10px 0);
+  }
+}

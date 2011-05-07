@@ -3,6 +3,7 @@ Uberbutton - A Compass plugin
 
 A class and a mixin to generate nifty buttons.
 
+<img src="http://dl.dropbox.com/u/811105/code-projects/uberbutton/screenshot.png" style="border: 1px solid #ddd">
 
 Installation
 ==================================
